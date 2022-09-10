@@ -5,7 +5,6 @@ import utilities from "../utilities/utilities.js";
 import RatingStars from "../../Utilities/RatingStars.jsx";
 
 //under each image is an invisible element which does not take up space on the dom. when the thumbnail for that image is clicked the respective modal version of that thumbnail has the class that hides it, removed.
-//this one module is handling the entire rendering of everything on each review list element. im not sure if i should break this up into further sub components but that would likely be a good idea for refactoring...
 
 //maybe i could have done modal rendering with state?
 const toggleModal = (e, id) => {

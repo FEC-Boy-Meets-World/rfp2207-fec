@@ -7,7 +7,7 @@ import { postNewReview, postToImgbb } from "../../Utilities/Atelier.jsx";
 import axios from "axios";
 
 const AddReviewForm = ({ id, meta, toggleModal }) => {
-  const [userRating, setUserRating] = useState(4);
+  const [userRating, setUserRating] = useState(0);
   // const [reviewCharacteristics, setReviewCharacteristics] = useState({});
   const [reviewCharacteristics, setReviewCharacteristics] = useState({
     220243: 1,
@@ -15,16 +15,13 @@ const AddReviewForm = ({ id, meta, toggleModal }) => {
     220245: 3,
     220246: 4,
   });
-  // const [recommend, setRecommend] = useState(null);
-  const [recommend, setRecommend] = useState(true);
+  const [recommend, setRecommend] = useState(null);
   const [userImgsThumb, setUserImgsThumb] = useState([]);
   const [userImgs, setUserImgs] = useState([]);
-  const [summary, setSummary] = useState("this thing was GOOD");
-  const [reviewBody, setReviewBody] = useState(
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
-  );
-  const [userName, setUserName] = useState("MaTtW");
-  const [email, setEmail] = useState("matt@matt.globemail");
+  const [summary, setSummary] = useState("");
+  const [reviewBody, setReviewBody] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
 
   //CONTEXT HOOK
   const { product_info } = useContext(ProductContext);
@@ -204,7 +201,6 @@ const AddReviewForm = ({ id, meta, toggleModal }) => {
             name="recommend"
             value="yes"
             required
-            defaultChecked="checked"
           ></input>
           <label htmlFor="yes">Yes</label>
           <input

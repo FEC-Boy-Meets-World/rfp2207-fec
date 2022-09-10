@@ -4,7 +4,7 @@ import utilities from "./utilities/utilities.js";
 import Sort from "./SubComponents/Sort.jsx";
 import RatingsBreakDown from "./SubComponents/RatingsBreakDown.jsx";
 import ReviewsList from "./SubComponents/ReviewsList.jsx";
-import AddReviewForm from "./Subcomponents/AddReviewForm.jsx";
+import AddReviewForm from "./SubComponents/AddReviewForm.jsx";
 import { useState, useEffect, useReducer } from "react";
 import {
   getReviewsByCount,
@@ -37,18 +37,57 @@ let RatingsAndReviewsMain = (props) => {
     5: false,
   };
 
-  // const [state, dispatch] = useReducer(reducer, initialState);
   const [state, setState] = useState(initialState);
   const [hasFiltered, setHasFiltered] = useState(false);
-  // const [id, setId] = useState(props.id);
   const [sortBy, setSortBy] = useState("relevant");
-  // const [displayedReviews, setDisplayedReviews] = useState(3);
-  // const [reviews, setReviews] = useState([]);
-  // const [meta, setMeta] = useState({});
-  // const [reviewStats, setReviewStats] = useState({});
   const [showMoreBtn, setShowMoreBtn] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [canRenderByRating, setCanRenderByRating] = useState(defaultFilter);
+  //////////////////
+
+  //attempt at intersection observer api use
+  // let reviewsObserved = 0;
+
+  // let revealReviews = (reviews) => {
+  //   let [review] = reviews;
+  //   if (!review.isIntersecting) return;
+
+  //   reviewsObserved++;
+  //   if (reviewsObserved === state.reviews.length) {
+  //     console.log("MADE IT TO THE END");
+  //     getReviewsByCount(props.id, sortBy, state.displayedReviews, 2)
+  //       .then((res) => {
+  //         if (res.data.count > res.data.results.length) {
+  //           setShowMoreBtn(false);
+  //         } else {
+  //           // setReviews(res.data.results);
+  //           // setDisplayedReviews(displayedReviews + 2);
+  //           setState({
+  //             ...state,
+  //             reviews: res.data.results,
+  //             displayedReviews: state.displayedReviews + 2,
+  //           });
+  //         }
+  //       })
+  //       .catch((err) => console.log(err));
+  //   }
+
+  //   // reviewObserver.unobserve(review.target);
+  // };
+
+  // let ObserverOptions = {
+  //   root: null,
+  //   threshold: 0.15,
+  // };
+
+  // let reviewObserver = new IntersectionObserver(revealReviews, ObserverOptions);
+
+  // let listItems = document.querySelectorAll(".RR_list-item");
+  // listItems.forEach((rvw) => {
+  //   reviewObserver.observe(rvw);
+  // });
+
+  /////////////////
 
   let swapSort = (sort) => {
     //ive decided the api call for sort is working well enough

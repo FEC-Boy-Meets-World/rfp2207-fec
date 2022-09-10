@@ -47,11 +47,8 @@ const ReviewFormRadio = ({ chars, charId, char, index, handleChange }) => {
     ],
   };
 
-  const [radioTitle, setRadioTitle] = useState(
-    userRatingRadioVals[char][index]
-  );
+  const [radioTitle, setRadioTitle] = useState("nothing selected");
 
-  // const [radioTitle, setRadioTitle] = useState("");
   let handleTitle = (e) => {
     setRadioTitle(e.target.value);
     handleChange(e);
@@ -71,9 +68,8 @@ const ReviewFormRadio = ({ chars, charId, char, index, handleChange }) => {
                 data-charid={`${charId}`}
                 data-charval={`${i + 1}`}
                 id="characteristics"
-                value={`${userRatingRadioVals[char][i]}`}
+                value={userRatingRadioVals}
                 onChange={(e) => handleTitle(e)}
-                defaultChecked={index === i ? "checked" : ""}
               ></input>
               <label>
                 {i === 0 || i === 4 ? userRatingRadioVals[char][i] : null}

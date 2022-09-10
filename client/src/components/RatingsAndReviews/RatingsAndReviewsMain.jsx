@@ -43,51 +43,6 @@ let RatingsAndReviewsMain = (props) => {
   const [showMoreBtn, setShowMoreBtn] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [canRenderByRating, setCanRenderByRating] = useState(defaultFilter);
-  //////////////////
-
-  //attempt at intersection observer api use
-  // let reviewsObserved = 0;
-
-  // let revealReviews = (reviews) => {
-  //   let [review] = reviews;
-  //   if (!review.isIntersecting) return;
-
-  //   reviewsObserved++;
-  //   if (reviewsObserved === state.reviews.length) {
-  //     console.log("MADE IT TO THE END");
-  //     getReviewsByCount(props.id, sortBy, state.displayedReviews, 2)
-  //       .then((res) => {
-  //         if (res.data.count > res.data.results.length) {
-  //           setShowMoreBtn(false);
-  //         } else {
-  //           // setReviews(res.data.results);
-  //           // setDisplayedReviews(displayedReviews + 2);
-  //           setState({
-  //             ...state,
-  //             reviews: res.data.results,
-  //             displayedReviews: state.displayedReviews + 2,
-  //           });
-  //         }
-  //       })
-  //       .catch((err) => console.log(err));
-  //   }
-
-  //   // reviewObserver.unobserve(review.target);
-  // };
-
-  // let ObserverOptions = {
-  //   root: null,
-  //   threshold: 0.15,
-  // };
-
-  // let reviewObserver = new IntersectionObserver(revealReviews, ObserverOptions);
-
-  // let listItems = document.querySelectorAll(".RR_list-item");
-  // listItems.forEach((rvw) => {
-  //   reviewObserver.observe(rvw);
-  // });
-
-  /////////////////
 
   let swapSort = (sort) => {
     //ive decided the api call for sort is working well enough
@@ -140,11 +95,13 @@ let RatingsAndReviewsMain = (props) => {
 
   //this could be moved to utilities later ~~~~~~~~~~~~~
   let showMoreReviews = () => {
+    console.log("show more reviews");
     getReviewsByCount(props.id, sortBy, state.displayedReviews, 2)
       .then((res) => {
         if (res.data.count > res.data.results.length) {
           setShowMoreBtn(false);
         } else {
+          console.log(state);
           // setReviews(res.data.results);
           // setDisplayedReviews(displayedReviews + 2);
           setState({
@@ -152,6 +109,7 @@ let RatingsAndReviewsMain = (props) => {
             reviews: res.data.results,
             displayedReviews: state.displayedReviews + 2,
           });
+          console.warn(state);
         }
       })
       .catch((err) => console.log(err));
@@ -159,7 +117,6 @@ let RatingsAndReviewsMain = (props) => {
 
   let fetchData = (id) => {
     let tempReviews;
-
     getReviewsByCount(props.id, sortBy, state.displayedReviews, 0)
       //res.data.results = arr of reviews
       .then((res) => {
@@ -238,10 +195,11 @@ export default RatingsAndReviewsMain;
 
 /* KNOWN BUGS / TODO
 
-  characteristics form isnt using required quite as well as the other forms components.
-
   break down review item subcomponent into more componenents
 
   swap helper functions for those in global helper file
+
+  infinite scroll, something is wrong with re - render upon reaching the bottom of the list of reviews... ?
+
   ---> delete my helper function file
 */

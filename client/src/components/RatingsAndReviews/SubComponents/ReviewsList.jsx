@@ -63,7 +63,6 @@ let ReviewsList = ({
 
   // useEffect(() => {
   //   let listEl = document.querySelector("#RR_reviews-list");
-
   //   listEl.addEventListener("scroll", handleScroll);
   // }, []);
 

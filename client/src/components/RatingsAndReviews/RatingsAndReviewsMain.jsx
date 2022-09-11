@@ -96,12 +96,13 @@ let RatingsAndReviewsMain = (props) => {
   //this could be moved to utilities later ~~~~~~~~~~~~~
   let showMoreReviews = () => {
     console.log("show more reviews");
+    console.log("passing in this state:", state, sortBy);
     getReviewsByCount(props.id, sortBy, state.displayedReviews, 2)
       .then((res) => {
         if (res.data.count > res.data.results.length) {
           setShowMoreBtn(false);
         } else {
-          console.log(state);
+          console.log("the response", res);
           // setReviews(res.data.results);
           // setDisplayedReviews(displayedReviews + 2);
           setState({
@@ -109,7 +110,7 @@ let RatingsAndReviewsMain = (props) => {
             reviews: res.data.results,
             displayedReviews: state.displayedReviews + 2,
           });
-          console.warn(state);
+          console.warn("post fetch state", state);
         }
       })
       .catch((err) => console.log(err));

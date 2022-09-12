@@ -1,9 +1,11 @@
 import React from "react";
 import axios from "axios";
+import ClipLoader from "react-spinners/ClipLoader";
 import utilities from "./utilities/utilities.js";
 import Sort from "./SubComponents/Sort.jsx";
 import RatingsBreakDown from "./SubComponents/RatingsBreakDown.jsx";
 import ReviewsList from "./SubComponents/ReviewsList.jsx";
+import AddReviewBtn from "./SubComponents/AddReviewBtn.jsx";
 import AddReviewForm from "./SubComponents/AddReviewForm.jsx";
 import { useState, useEffect, useReducer } from "react";
 import {
@@ -14,7 +16,7 @@ import {
 
 let RatingsAndReviewsMain = (props) => {
   let initialState = {
-    id: props.id,
+    id: props.state.id,
     reviews: [],
     meta: {},
     reviewStats: {},
@@ -93,13 +95,11 @@ let RatingsAndReviewsMain = (props) => {
     showModal ? setShowModal(false) : setShowModal(true);
   };
 
-  //this could be moved to utilities later ~~~~~~~~~~~~~
-
   let showMoreReviews = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      setDisplayedReviews((displayedReviews) => displayedReviews + 3);
+      setDisplayedReviews((displayedReviews) => displayedReviews + 2);
     }, 750);
   };
 
@@ -111,7 +111,7 @@ let RatingsAndReviewsMain = (props) => {
 
   let fetchData = (id) => {
     let tempReviews;
-    getReviewsByCount(props.id, sortBy, displayedReviews, 100)
+    getReviewsByCount(props.state.id, sortBy, displayedReviews, 100)
       //res.data.results = arr of reviews
       .then((res) => {
         tempReviews = res.data.results;
@@ -123,7 +123,7 @@ let RatingsAndReviewsMain = (props) => {
       })
       .then(() => {
         // get meta data for current product
-        return getReviewMetaData(props.id);
+        return getReviewMetaData(props.state.id);
       })
       .then((res) => {
         let reviewStatsObj = utilities.getAvgReviewValue(res.data);
@@ -140,13 +140,13 @@ let RatingsAndReviewsMain = (props) => {
 
   //when props update, call fetchData
   useEffect(() => {
-    fetchData(props.id);
+    fetchData(props.state.id);
     setShowMoreBtn(true);
-  }, [props.id]);
+  }, [props.state.id]);
 
   //when sort method changes, çre-render reviews
   useEffect(() => {
-    fetchData(props.id);
+    fetchData(props.state.id);
   }, [sortBy]);
 
   return (
@@ -171,13 +171,21 @@ let RatingsAndReviewsMain = (props) => {
             toggleModal={toggleModal}
             loading={loading}
           />
+          <div id="RR_review-btns-container">
+            {showMoreBtn ? (
+              <ClipLoader loading={loading} color="#7e9cb7" size="50px" />
+            ) : null}
+            {state.reviews.length ? (
+              <AddReviewBtn toggleModal={toggleModal} />
+            ) : null}
+          </div>
         </div>
       </div>
       {showModal ? (
         <div>
           <div className="RR_modal-container" onClick={toggleModal}></div>
           <AddReviewForm
-            id={props.id}
+            id={props.state.id}
             meta={state.meta}
             toggleModal={toggleModal}
           />

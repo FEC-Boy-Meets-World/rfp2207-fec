@@ -68,7 +68,7 @@ const ReviewFormRadio = ({ chars, charId, char, index, handleChange }) => {
                 data-charid={`${charId}`}
                 data-charval={`${i + 1}`}
                 id="characteristics"
-                value={userRatingRadioVals}
+                value={userRatingRadioVals[char][i]}
                 onChange={(e) => handleTitle(e)}
               ></input>
               <label>

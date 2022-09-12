@@ -484,9 +484,12 @@
 }
 
 #RR_review-btns-container {
-  width: 40%;
+  height: 10vh;
+  width: 100%;
   display: flex;
-  justify-content: space-around;
+  position: relative;
+  justify-content: center;
+  align-items: center;
   flex-direction: row;
 }
 .RR_review-btn {
@@ -499,6 +502,9 @@
   transition: 200ms;
   cursor: pointer;
   border-radius: 5px;
+  position: absolute;
+  right: 0;
+  margin-right: 6vw;
 }
 .RR_review-btn:hover {
   background-color: var(--button-background-hover);

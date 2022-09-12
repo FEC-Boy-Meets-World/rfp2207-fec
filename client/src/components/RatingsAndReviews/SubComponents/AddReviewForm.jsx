@@ -8,13 +8,7 @@ import axios from "axios";
 
 const AddReviewForm = ({ id, meta, toggleModal }) => {
   const [userRating, setUserRating] = useState(0);
-  // const [reviewCharacteristics, setReviewCharacteristics] = useState({});
-  const [reviewCharacteristics, setReviewCharacteristics] = useState({
-    220243: 1,
-    220244: 2,
-    220245: 3,
-    220246: 4,
-  });
+  const [reviewCharacteristics, setReviewCharacteristics] = useState({});
   const [recommend, setRecommend] = useState(null);
   const [userImgsThumb, setUserImgsThumb] = useState([]);
   const [userImgs, setUserImgs] = useState([]);
@@ -53,7 +47,6 @@ const AddReviewForm = ({ id, meta, toggleModal }) => {
         reviewCharacteristics[e.target.dataset.charid] = Number(
           e.target.dataset.charval
         );
-        console.log(copy);
         setReviewCharacteristics(copy);
         break;
     }

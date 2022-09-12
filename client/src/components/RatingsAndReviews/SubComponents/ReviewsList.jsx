@@ -1,8 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
-import CircleLoader from "react-spinners/CircleLoader";
-import PulseLoader from "react-spinners/PulseLoader";
 import ReviewItem from "./ReviewItem.jsx";
 import AddReviewBtn from "./AddReviewBtn.jsx";
 
@@ -90,19 +88,18 @@ let ReviewsList = ({
           }
         })}
       </div>
-      <div>
+      {/* <div>
         {showMoreBtn ? (
           <ClipLoader loading={loading} color="#7e9cb7" size="50px" />
         ) : null}
-      </div>
-      <div id="RR_review-btns-container">
-        {/* {showMoreBtn ? (
+      </div> */}
+      {/* <div id="RR_review-btns-container">
+        {showMoreBtn ? (
           <button className="RR_review-btn" onClick={() => showMoreReviews()}>
             MORE REVIEWS
           </button>
-        ) : null} */}
-        {reviews.length ? <AddReviewBtn toggleModal={toggleModal} /> : null}
-      </div>
+        ) : null}
+      </div> */}
     </div>
   );
 };

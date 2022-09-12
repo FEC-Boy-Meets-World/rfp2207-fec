@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-//props = sortMethod, id
 let Sort = ({ sortMethod, swapSort }) => {
   const [sortBy, setSortBy] = useState("newest");
 

@@ -4,7 +4,6 @@ import RatingStars from "../../Utilities/RatingStars.jsx";
 import SingleBreakDown from "./SingleBreakDown.jsx";
 import ProductFactor from "./ProductFactor.jsx";
 
-//props = reviewStats, meta, id
 let RatingsBreakDown = (props) => {
   // state, fn to edit state = hook (initial val)
   const [avg, setAvg] = useState(0);

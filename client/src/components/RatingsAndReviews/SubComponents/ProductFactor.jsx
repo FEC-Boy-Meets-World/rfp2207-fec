@@ -1,7 +1,6 @@
 import React from "react";
 
 const ProductFactor = ({ factor, factorVal }) => {
-  // console.log("/////", factor, factorVal.value);
   //5 point scale for each
 
   let width = (Number(factorVal.value) / 5) * 100;

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
-// import utilities from "../utilities/utilities.js";
 import { markReviewHelpful, reportReview } from "../../Utilities/Atelier.jsx";
 
 const HelpfulnessAndReport = ({ review }) => {

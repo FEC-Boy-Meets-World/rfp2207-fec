@@ -4,9 +4,6 @@ import HelpfulnessAndReport from "./helpfulnessAndReport.jsx";
 import utilities from "../utilities/utilities.js";
 import RatingStars from "../../Utilities/RatingStars.jsx";
 
-//under each image is an invisible element which does not take up space on the dom. when the thumbnail for that image is clicked the respective modal version of that thumbnail has the class that hides it, removed.
-
-//maybe i could have done modal rendering with state?
 const toggleModal = (e, id) => {
   e.preventDefault();
   let reviewImgModal = document.getElementById(`RR_modal-container-${id}`);

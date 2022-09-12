@@ -39,7 +39,7 @@ let ReviewsList = ({
   //   };
   // }, [element]);
 
-  //////////REMEMBER TO SET ref={setElement} on div ln87~
+  //// REMEMBER TO SET ref={setElement} on div ln87~
 
   // const observer = useRef(
   //   new IntersectionObserver((entries) => {
@@ -88,18 +88,6 @@ let ReviewsList = ({
           }
         })}
       </div>
-      {/* <div>
-        {showMoreBtn ? (
-          <ClipLoader loading={loading} color="#7e9cb7" size="50px" />
-        ) : null}
-      </div> */}
-      {/* <div id="RR_review-btns-container">
-        {showMoreBtn ? (
-          <button className="RR_review-btn" onClick={() => showMoreReviews()}>
-            MORE REVIEWS
-          </button>
-        ) : null}
-      </div> */}
     </div>
   );
 };

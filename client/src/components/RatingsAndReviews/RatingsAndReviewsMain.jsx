@@ -16,7 +16,6 @@ let RatingsAndReviewsMain = (props) => {
   let initialState = {
     id: props.id,
     reviews: [],
-    displayedReviews: 3,
     meta: {},
     reviewStats: {},
   };
@@ -43,6 +42,8 @@ let RatingsAndReviewsMain = (props) => {
   const [showMoreBtn, setShowMoreBtn] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [canRenderByRating, setCanRenderByRating] = useState(defaultFilter);
+  const [displayedReviews, setDisplayedReviews] = useState(3);
+  const [loading, setLoading] = useState(false);
 
   let swapSort = (sort) => {
     //ive decided the api call for sort is working well enough
@@ -50,7 +51,6 @@ let RatingsAndReviewsMain = (props) => {
   };
 
   let ratingsFilter = (e, starNum) => {
-    console.log(e.target);
     e.target.closest("#RR_ratings-bd-count").classList.toggle("selected");
     // if all are false and have filtered
     let filterCopy = { ...canRenderByRating };
@@ -94,36 +94,29 @@ let RatingsAndReviewsMain = (props) => {
   };
 
   //this could be moved to utilities later ~~~~~~~~~~~~~
+
   let showMoreReviews = () => {
-    console.log("show more reviews");
-    console.log("passing in this state:", state, sortBy);
-    getReviewsByCount(props.id, sortBy, state.displayedReviews, 2)
-      .then((res) => {
-        if (res.data.count > res.data.results.length) {
-          setShowMoreBtn(false);
-        } else {
-          console.log("the response", res);
-          // setReviews(res.data.results);
-          // setDisplayedReviews(displayedReviews + 2);
-          setState({
-            ...state,
-            reviews: res.data.results,
-            displayedReviews: state.displayedReviews + 2,
-          });
-          console.warn("post fetch state", state);
-        }
-      })
-      .catch((err) => console.log(err));
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setDisplayedReviews((displayedReviews) => displayedReviews + 3);
+    }, 750);
   };
+
+  useEffect(() => {
+    if (displayedReviews >= state.reviews.length) {
+      setShowMoreBtn(false);
+    }
+  }, [displayedReviews]);
 
   let fetchData = (id) => {
     let tempReviews;
-    getReviewsByCount(props.id, sortBy, state.displayedReviews, 0)
+    getReviewsByCount(props.id, sortBy, displayedReviews, 100)
       //res.data.results = arr of reviews
       .then((res) => {
         tempReviews = res.data.results;
         //if less then defined amount of reviews come back
-        if (tempReviews.length < state.displayedReviews) {
+        if (tempReviews.length < displayedReviews) {
           //remove button to show more reviews
           setShowMoreBtn(false);
         }
@@ -171,10 +164,12 @@ let RatingsAndReviewsMain = (props) => {
           <ReviewsList
             showMoreBtn={showMoreBtn}
             reviews={state.reviews}
+            displayedReviews={displayedReviews}
             filter={canRenderByRating}
             id={state.id}
             showMoreReviews={showMoreReviews}
             toggleModal={toggleModal}
+            loading={loading}
           />
         </div>
       </div>
@@ -199,8 +194,6 @@ export default RatingsAndReviewsMain;
   break down review item subcomponent into more componenents
 
   swap helper functions for those in global helper file
-
-  infinite scroll, something is wrong with re - render upon reaching the bottom of the list of reviews... ?
 
   ---> delete my helper function file
 */

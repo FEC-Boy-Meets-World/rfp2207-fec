@@ -13,11 +13,10 @@ module.exports.getReviewsByCount = (id, sortBy, displayedReviews, count) =>
     headers: { Authorization: process.env.KEY },
   });
 
-module.exports.postNewReview = (post) => {
+module.exports.postNewReview = (post) =>
   axios.post(`${ATELIER_API}/reviews`, post, {
     headers: { Authorization: process.env.KEY },
   });
-};
 
 module.exports.markReviewHelpful = (id) =>
   axios.put(

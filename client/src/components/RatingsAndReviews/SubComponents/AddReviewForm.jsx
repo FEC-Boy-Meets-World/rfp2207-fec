@@ -82,6 +82,7 @@ const AddReviewForm = ({ id, meta, toggleModal }) => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     let userReview = {
       product_id: id,
       rating: userRating,
@@ -122,7 +123,7 @@ const AddReviewForm = ({ id, meta, toggleModal }) => {
       return;
     }
 
-    if (userImgs.length > 0) {
+    if (userImgs.length !== undefined && userImgs.length > 0) {
       let promises = [];
 
       for (let [key, img] of Object.entries(userImgs)) {
@@ -139,7 +140,6 @@ const AddReviewForm = ({ id, meta, toggleModal }) => {
           //take urls and apply to userReview obj
           userReview.photos = res.map((imgReply) => imgReply.data.data.url);
 
-          console.log("posting review: ", userReview);
           postNewReview(userReview);
         })
         .catch((err) => {

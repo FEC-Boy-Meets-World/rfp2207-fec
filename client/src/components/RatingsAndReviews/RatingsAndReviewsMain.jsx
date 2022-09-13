@@ -172,12 +172,26 @@ let RatingsAndReviewsMain = (props) => {
             loading={loading}
           />
           <div id="RR_review-btns-container">
-            {showMoreBtn ? (
-              <ClipLoader loading={loading} color="#7e9cb7" size="50px" />
-            ) : null}
-            {state.reviews.length ? (
-              <AddReviewBtn toggleModal={toggleModal} />
-            ) : null}
+            <div>
+              {showMoreBtn ? (
+                <button
+                  className="RR_add-review-btn"
+                  onClick={() => showMoreReviews()}
+                >
+                  MORE REVIEWS
+                </button>
+              ) : null}
+            </div>
+            <div>
+              {showMoreBtn ? (
+                <ClipLoader loading={loading} color="#7e9cb7" size="50px" />
+              ) : null}
+            </div>
+            <div>
+              {state.reviews.length ? (
+                <AddReviewBtn toggleModal={toggleModal} />
+              ) : null}
+            </div>
           </div>
         </div>
       </div>

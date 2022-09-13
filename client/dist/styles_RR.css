@@ -484,7 +484,7 @@
 }
 
 #RR_review-btns-container {
-  height: 10vh;
+  height: 15vh;
   width: 100%;
   display: flex;
   position: relative;
@@ -492,6 +492,28 @@
   align-items: center;
   flex-direction: row;
 }
+
+.RR_add-review-btn {
+  border: none;
+  height: 2.5em;
+  width: auto;
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: var(--button-background);
+  transition: 200ms;
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;
+  left: 0;
+  top: 20%;
+  margin-left: 15vw;
+}
+
+.RR_add-review-btn:hover {
+  background-color: var(--button-background-hover);
+  transition: 200ms ease-in-out;
+}
+
 .RR_review-btn {
   border: none;
   height: 2.5em;
@@ -504,8 +526,10 @@
   border-radius: 5px;
   position: absolute;
   right: 0;
-  margin-right: 6vw;
+  top: 20%;
+  margin-right: 15vw;
 }
+
 .RR_review-btn:hover {
   background-color: var(--button-background-hover);
   transition: 200ms ease-in-out;

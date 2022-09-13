@@ -506,7 +506,7 @@
   position: absolute;
   left: 0;
   top: 20%;
-  margin-left: 15vw;
+  margin-left: 12vw;
 }
 
 .RR_add-review-btn:hover {
@@ -527,7 +527,7 @@
   position: absolute;
   right: 0;
   top: 20%;
-  margin-right: 15vw;
+  margin-right: 12vw;
 }
 
 .RR_review-btn:hover {

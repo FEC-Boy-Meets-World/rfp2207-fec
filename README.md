@@ -11,7 +11,7 @@
 <a name="general-info"></a>
 ### General Info 
 <!--![Draft](https://img.shields.io/badge/Draft-5a29e4.svg?style=flat&logoColor=white) <br />-->
-This project simulates an interactive e-commerce product page utilizing React and CSS to demonstrate front end competency. 
+An interactive e-commerce product page utilizing React and CSS to demonstrate front end competency. 
 
 
 <a name="demo"></a>
